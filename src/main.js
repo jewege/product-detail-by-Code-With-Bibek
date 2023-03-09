@@ -1,4 +1,12 @@
-import { createApp } from 'vue'
-import App from './App.vue'
+import Vue from "vue";
+import App from "./App.vue";
+import "bootstrap-icons/font/bootstrap-icons.css";
 
-createApp(App).mount('#app')
+Vue.config.productionTip = false;
+
+import "./assets/css/main.css";
+
+export const eventBus = new Vue();
+new Vue({
+  render: (h) => h(App),
+}).$mount("#app");

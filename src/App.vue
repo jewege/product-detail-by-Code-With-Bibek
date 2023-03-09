@@ -1,26 +1,36 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div id="app">
+    <!-- header -->
+    <header id="header">
+      <div class="container">
+        <div class="cart">
+          <p><i class="fas fa-shopping-cart"></i> {{ cart.length }}</p>
+        </div>
+      </div>
+    </header>
+
+    <ProductDetail @addtocart="updatecart" :member="member"></ProductDetail>
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import ProductDetail from "./components/ProductDetail.vue";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    HelloWorld
-  }
-}
+    ProductDetail,
+  },
+  data() {
+    return {
+      member: true,
+      cart: [],
+    };
+  },
+  methods: {
+    updatecart(id) {
+      this.cart.push(id);
+    },
+  },
+};
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
